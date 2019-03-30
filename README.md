@@ -16,7 +16,11 @@ I edit **/etc/nginx/nginx.conf** and tell it to include my "conf" directory and 
 
 ```include /home/user/websrv/conf/*.conf;```
 
+The script will copy my default nginx conf template, rename it to match your sitename and replace the path details to match the script variables. Make sure you update the script variables to match your local environment.
 
+I hope this makes your dev time more enjoyable.
+
+If you have any feedback, I'm very open!
 
 ## Usage
 
