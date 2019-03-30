@@ -92,11 +92,8 @@ else
 
             gitRepoName=${gitRepoUrl##*/}
             gitProject=${gitRepoName%.*}
-            echo $gitRepoName
-            echo $gitproject
 
             cd $dirSites
-
             git clone $gitRepoUrl
 
             read -p "Save this git repo in your local repos path?: [Y/N] " saveRepoYN
