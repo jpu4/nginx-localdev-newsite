@@ -89,22 +89,27 @@ else
 
             # Load remote package from git repo
             read -p "git repo url: " gitRepoUrl
+
+            gitRepoName=${gitRepoUrl##*/}
+            gitProject=${gitRepoName%.*}
+            echo $gitRepoName
+            echo $gitproject
+
             cd $dirSites
+
             git clone $gitRepoUrl
-            cd $dirWebSrv
+
             read -p "Save this git repo in your local repos path?: [Y/N] " saveRepoYN
 
             saveRepoYN="$(tr [A-Z] [a-z] <<< "$saveRepoYN")"
             if [ $saveRepoYN == 'y' ]
             then
-                gitRepoName=${gitRepoUrl##*/}
-                gitProject=${gitRepoName%.*}
-                cd $dirSites
                 zip -r $dirRepos/$gitProject.zip $gitProject
-                cd $dirWebSrv
                 sudo chown $localUser:$localUser $dirRepos/$gitProject.zip
             fi
-
+            # Rename gitproject folder to match sitename
+            mv $gitProject $sitename
+            cd $dirSites
         ;;
 
         [n]* )
